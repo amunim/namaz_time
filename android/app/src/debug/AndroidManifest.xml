@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.namaz_time">
+    <!-- Flutter needs it to communicate with the running application
+         to allow setting breakpoints, to provide hot reload, etc.
+    -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <meta-data
+    android:name="io.flutter.embedding.android.SplashScreenDrawable"
+    android:resource="@drawable/launch_background"
+    />
+</manifest>
