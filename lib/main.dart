@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:duration_picker/duration_picker.dart';
+// import 'package:duration_picker/duration_picker.dart';
 import 'package:flutter_countdown_timer/index.dart';
 import 'package:namaz_time/timeline.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:enum_to_string/enum_to_string.dart';
+
+import 'duration_picker.dart';
 
 final List<String> titles = [
   "SubhanaK-Allahumma",
@@ -69,7 +71,7 @@ class PrefsUpdate extends ChangeNotifier {
 
 PrefsUpdate updates = PrefsUpdate();
 
-Languages language = Languages.english;
+Languages language = Languages.arabic;
 
 Map<int, TextEditingController> controllers = {};
 Map<int, int> savedTime = {};
@@ -344,7 +346,9 @@ class _StartPray extends State<StartPray> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Rakah: $currentRaka',
+                    language == Languages.english
+                        ? 'Rakah: $currentRaka'
+                        : 'ركعة: $currentRaka',
                     style: const TextStyle(fontSize: 30),
                   ),
                   Text(
@@ -400,7 +404,9 @@ class _SettingsState extends State<Settings> {
                   ? ""
                   : prefs!.getInt(i.toString()).toString()));
       settingsPage.add(TimeInput(
-          title: titles[i], name: descriptions[i], controller: controller));
+          title: language == Languages.english ? titles[i] : processesArabic[i],
+          name: descriptions[i],
+          controller: controller));
     }
   }
 
